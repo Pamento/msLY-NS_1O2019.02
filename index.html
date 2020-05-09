@@ -5,27 +5,318 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="./style/style.css">
   <title>Massage sur Lyon</title>
-  <script>
-    (() => {
-      'use strict';
-      // Page is loaded
-      const objects = document.getElementsByClassName('asyncImage');
-      Array.from(objects).map((item) => {
-        // Start loading image
-        const img = new Image();
-        img.src = item.dataset.src;
-        // Once image is loaded replace the src of the HTML element
-        img.onload = () => {
-          item.classList.remove('asyncImage');
-          return item.nodeName === 'IMG' ?
-            item.src = item.dataset.src :
-            item.style.backgroundImage = `url(${item.dataset.src})`;
-        };
-      });
-    })();
-  </script>
+  <style>
+    @font-face {
+      font-family: oneida;
+      src: url("./fonts/Blacksword.otf");
+    }
+
+    body {
+      color: #332100;
+      background-color: #fcd691;
+      border-left: 1px solid #cccccc;
+      border-right: 1px solid #cccccc;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    img {
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      height: 100%;
+      width: 100%;
+    }
+
+    header {
+      background-color: #ffffff;
+      height: 50px;
+      box-shadow: 0 8px 6px -6px black;
+      margin: 0.9em;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 45px;
+    }
+
+    .logo {
+      width: 36px;
+      height: 45px;
+      padding: 0 5px;
+    }
+
+    .header>h1 {
+      color: #11d6f6;
+      text-shadow: -1px -2px 0 rgba(0, 0, 0, 0.6), 1px 2px 0 rgba(255, 255, 255, 1);
+      font-family: "Garamond Header", Palatino, Verdana, Geneva, Tahoma, sans-serif;
+      margin: auto;
+      text-align: center;
+    }
+
+    .oneidaName {
+      height: 48px;
+      display: block;
+      width: inherit;
+    }
+
+    /*
+main section image presentation of massage
+*/
+    /* ---------------------- slides ----------- */
+    #sectionBody {
+      background-image: url("./images/slide_1-min.jpg");
+      -moz-background-image: url("./images/slide_1-min.jpg");
+      background-size: cover;
+      -moz-background-size: cover;
+      background-position: center;
+      -moz-background-position: center;
+      background-repeat: no-repeat;
+      -moz-background-repeat: no-repeat;
+    }
+
+    .slidesBox {
+      height: 60vh;
+      margin-bottom: 1.9em;
+    }
+
+    .slideItem {
+      height: inherit;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .slides {
+      text-align: inherit;
+    }
+
+    .motDevise {
+      color: #ffffff;
+      font-size: 1.6em;
+      font-weight: bold;
+      margin: 4em 3em;
+    }
+
+    .motDevise>p {
+      text-shadow: 1px 1px 2px #000000, 3px 3px 4px #424242;
+      margin: 0 auto;
+    }
+
+    .motDevise>p:nth-child(2) {
+      margin-left: 2.3em;
+    }
+
+    .oneidaFont {
+      color: #10d5f5;
+      font-family: oneida;
+      font-size: 2.3em;
+    }
+
+    /* ---------------------- galery ----------- */
+
+    .card {
+      font-style: oblique;
+      background-color: #f5f5dc;
+      box-shadow: 5px 5px 13px #777722;
+      max-width: 70vw;
+      margin: 1em auto;
+    }
+
+    .cardLink {
+      padding: 2.5em;
+    }
+
+    .cardLink>h2 {
+      padding: 0 1em;
+    }
+
+    .contentCard {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .smallImage {
+      width: 300px;
+      padding: 1.5em;
+    }
+
+    .mDescript {
+      padding: 1em;
+    }
+
+    .mDescript>p {
+      margin-top: 0.5em;
+    }
+
+    /*
+footer : contact, notifications, rights
+*/
+    /* ---------------------- footer ----------- */
+    footer {
+      box-shadow: 0 8px 6px -6px black;
+      background-color: #ffffff;
+      margin: 1.9em 0.9em 0.3em;
+    }
+
+    .footerItems {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+
+    .toClick {
+      border: 1px solid #777722;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .toClick:hover {
+      background-color: #777722;
+      color: #ffffff;
+    }
+
+    .developerLink {
+      font-size: 0.7em;
+      margin: 0 3.2em;
+    }
+
+    .developerLink>a {
+      color: #000;
+      text-decoration: none;
+    }
+
+    .card:hover {
+      background-color: #ffffff;
+    }
+
+    .modalClass {
+      background-color: rgba(0, 0, 0, 0.6);
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      top: -8px;
+      left: -8px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .itemFlyer {
+      width: 80vw;
+      margin: auto;
+    }
+
+    .displNon {
+      display: none;
+    }
+
+    .displ {
+      display: block;
+      width: 100%;
+    }
+
+    /*
+* ------------ @media queris ------------
+*/
+    @media all and (min-width: 450px) and (max-width: 1024px) {
+      .header {
+        padding: 0 15px;
+      }
+
+      .header>h1 {
+        font-size: 1.2em;
+        text-align: center;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .motDevise>p {
+        max-width: 300px;
+      }
+
+      .card {
+        max-width: 83vw;
+      }
+
+      .contentCard,
+      .footerItems {
+        flex-direction: column;
+      }
+
+      .cardLink {
+        padding: 1.5em;
+      }
+
+      .footerItems>* {
+        text-align: center;
+      }
+    }
+
+    @media all and (min-width: 200px) and (max-width: 450px) {
+      .header {
+        padding: 0 5px;
+      }
+
+      .header>h1 {
+        font-size: 0.8em;
+        text-align: center;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .motDevise {
+        margin: 2em 1em;
+        max-width: 200px;
+      }
+
+      .motDevise>p {
+        max-width: 300px;
+        font-size: 0.7em;
+      }
+
+      .card {
+        max-width: 93vw;
+      }
+
+      .contentCard,
+      .footerItems {
+        flex-direction: column;
+      }
+
+      .cardLink {
+        padding: 1em 0;
+      }
+
+      .cardLink>h2 {
+        margin: 0;
+      }
+
+      .smallImage {
+        width: inherit;
+        padding: 1.5em;
+      }
+
+      footer {
+        margin: 1.9em 0em 0.3em;
+        padding: 1em;
+      }
+
+      .footerItems>* {
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 
 <body id="body">
@@ -39,17 +330,20 @@
     </a>
   </header>
   <main>
-    <section class="slidesBox">
-      <a class="contactLink" href="#contact">
-        <div class="slideItem">
-          <div class="slides">
-            <div class="motDevise">
-              <p><span class="oneidaFont">Oneida.... </span></p>
-              <p>Et je reprends de la force!</p>
+    <section id="sectionBody" class="asyncImage" data-src="./image/slide_1.jpg">
+      <div class="slidesBox">
+        <a class="contactLink" href="#contact">
+          <div class="slideItem">
+            <div class="slides">
+              <div class="motDevise">
+                <p><span class="oneidaFont">Oneida.... </span></p>
+                <p>Et je reprends de la force!</p>
+              </div>
             </div>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
+
     </section>
 
     <section class="galery">
@@ -80,8 +374,8 @@
             <h2>LE RENAISSANCE </h2>
             <div class="contentCard">
               <div class="smallImage">
-                <img class="asyncImage" src="./images/s-californien.jpg" alt="massage californien"
-                  title="massage californien" data-lieu="Lyon">
+                <img class="asyncImage" src="./images/s-californien-min.jpg" data-src="./images/s-californien.jpg"
+                  alt="massage californien" title="massage californien" data-lieu="Lyon">
               </div>
               <div class="mDescript">
                 <p>Permet de dénouer les tensions du corps et de l'esprit. Vous vous retrouvez détendu, apaisé et
@@ -100,7 +394,8 @@
             <h2>LE SERENITE</h2>
             <div class="contentCard">
               <div class="smallImage">
-                <img class="asyncImage" src="./images/s-pierres-chaudes.jpg" alt="Massage Aux pierres chaudes"
+                <img class="asyncImage" src="./images/s-pierres-chaudes-min.jpg"
+                  data-src="./images/s-pierres-chaudes.jpg" alt="Massage Aux pierres chaudes"
                   title="massage aux pierres chaudes" data-lieu="Lyon">
               </div>
               <div class="mDescript">
@@ -123,8 +418,8 @@
             <h2>L'EQUILIBRE</h2>
             <div class="contentCard">
               <div class="smallImage">
-                <img class="asyncImage" src="./images/s-abhyanga.jpg" alt="Massage ayurvédique abhyanga"
-                  title="massage ayurvédique abhyanga" data-lieu="Lyon">
+                <img class="asyncImage" src="./images/s-abhyanga-min.jpg" data-src="./images/s-abhyanga.jpg"
+                  alt="Massage ayurvédique abhyanga" title="massage ayurvédique abhyanga" data-lieu="Lyon">
               </div>
               <div class="mDescript">
                 <p>Offre un véritable bien-être aux sujets les plus stressés. Favorise la concentration et d'un point de
@@ -145,8 +440,8 @@
             <h2>L'APAISANT</h2>
             <div class="contentCard">
               <div class="smallImage">
-                <img class="asyncImage" src="./images/s-shirotchampi.jpg" alt="massage ayurvédique shirotchampi"
-                  title="massage ayurvédique shirotchampi" data-lieu="Lyon">
+                <img class="asyncImage" src="./images/s-shirotchampi-min.jpg" data-src="./images/s-shirotchampi.jpg"
+                  alt="massage ayurvédique shirotchampi" title="massage ayurvédique shirotchampi" data-lieu="Lyon">
               </div>
               <div class="mDescript">
                 <p>Technique de détente crânienne inspirée de la médecine ayurvédique.
@@ -166,8 +461,8 @@
             <h2>LE DYNAMISANT</h2>
             <div class="contentCard">
               <div class="smallImage">
-                <img class="asyncImage" src="./images/s-balinais.jpg" alt="massage balinais" title="massage balinais"
-                  data-lieu="Lyon">
+                <img class="asyncImage" src="./images/s-balinais-min.jpg" data-src="./images/s-balinais.jpg"
+                  alt="massage balinais" title="massage balinais" data-lieu="Lyon">
               </div>
               <div class="mDescript">
                 <p>Originaire de Bali, ce massage est issue des techniques traditionnelles originaires de Chine,
@@ -188,8 +483,8 @@
             <h2>LE REPOSE-PIEDS</h2>
             <div class="contentCard">
               <div class="smallImage">
-                <img class="asyncImage" src="./images/s-foot-thai.png" alt="massage Foot thai" title="massage foot thai"
-                  data-lieu="Lyon">
+                <img class="asyncImage" src="./images/s-foot-thai-min.png" data-src="./images/s-foot-thai.png"
+                  alt="massage Foot thai" title="massage foot thai" data-lieu="Lyon">
               </div>
               <div class="mDescript">
                 <p>Composé de massages avec les mains et de pressions sur des points spécifiques à l'aide d'un stylet en
@@ -210,8 +505,8 @@
             <h2>L'HARMONIE</h2>
             <div class="contentCard">
               <div class="smallImage">
-                <img class="asyncImage" src="./images/s-shiatsu.jpg" alt="massage Shiatsu" title="massage shiatsu"
-                  data-lieu="Lyon">
+                <img class="asyncImage" src="./images/s-shiatsu-min.jpg" data-src="./images/s-shiatsu.jpg"
+                  alt="massage Shiatsu" title="massage shiatsu" data-lieu="Lyon">
               </div>
               <div class="mDescript">
                 <p>Pratiquée depuis des millénaires en Extrême-Orient, il allie pressions et étirement de l'ensemble du
@@ -232,8 +527,8 @@
             <h2>LE STIMULANT</h2>
             <div class="contentCard">
               <div class="smallImage">
-                <img class="asyncImage" src="./images/s-thai-l-huile.jpg" alt="massage Thai à l’huile"
-                  title="massage thai à l’huile" data-lieu="Lyon">
+                <img class="asyncImage" src="./images/s-thai-l-huile-min.jpg" data-src="./images/s-thai-l-huile.jpg"
+                  alt="massage Thai à l’huile" title="massage thai à l’huile" data-lieu="Lyon">
               </div>
               <div class="mDescript">
                 <p>Technique de relaxation qui allie digit pression, lissage profond et étirement. Le corps est libéré
@@ -265,6 +560,30 @@
       id="yearInUp">2019</span></span>
   <script>
     document.getElementById('yearInUp').innerHTML = new Date().getFullYear();
+    (() => {
+      'use strict';
+      // Page is loaded
+      const objects = document.getElementsByClassName('asyncImage');
+      let c = 0;
+      console.log("###########################################################");
+      console.log("###########################################################");
+      console.log(objects.length);
+      console.log("###########################################################");
+      console.log(objects);
+      Array.from(objects).map((item) => {
+        // Start loading image
+        const img = new Image();
+        img.src = item.dataset.src;
+        // Once image is loaded replace the src of the HTML element
+        img.onload = () => {
+          item.classList.remove('asyncImage');
+          console.log(c + "img  LOADED " + item.nodeName); c++;
+          return item.nodeName === 'IMG' ?
+            item.src = item.dataset.src :
+            item.style.backgroundImage = `url(${item.dataset.src})`;
+        };
+      });
+    })();
   </script>
 </body>
 
