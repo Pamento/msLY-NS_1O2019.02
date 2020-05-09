@@ -31,7 +31,7 @@
       width: 100%;
     }
 
-    header {
+    nav {
       background-color: #ffffff;
       height: 50px;
       box-shadow: 0 8px 6px -6px black;
@@ -68,7 +68,7 @@
 main section image presentation of massage
 */
     /* ---------------------- slides ----------- */
-    #sectionBody {
+    header {
       background-image: url("./images/slide_1-min.jpg");
       -moz-background-image: url("./images/slide_1-min.jpg");
       background-size: cover;
@@ -320,17 +320,17 @@ footer : contact, notifications, rights
 </head>
 
 <body id="body">
-  <header id="headerTop">
+  <nav id="headerTop">
     <a class="contactLink" href="#contact">
       <div class="header">
         <img class="logo" src="./images/o_logo.jpg" alt="Oneida logo" data-lieu="Lyon">
         <h1>Massages <wbr>bien-être à Lyon</h1>
-          <img class="oneidaName" src="./images/site_name.jpg" alt="Oneida name" data-lieu="Lyon">
+        <img class="oneidaName" src="./images/site_name.jpg" alt="Oneida name" data-lieu="Lyon">
       </div>
     </a>
-  </header>
+  </nav>
   <main>
-    <section id="sectionBody" class="asyncImage" data-src="./image/slide_1.jpg">
+    <header class="asyncImage" data-src="./images/slide_1.normal.jpg">
       <div class="slidesBox">
         <a class="contactLink" href="#contact">
           <div class="slideItem">
@@ -344,7 +344,7 @@ footer : contact, notifications, rights
         </a>
       </div>
 
-    </section>
+    </header>
 
     <section class="galery">
       <div class="card">
@@ -564,12 +564,6 @@ footer : contact, notifications, rights
       'use strict';
       // Page is loaded
       const objects = document.getElementsByClassName('asyncImage');
-      let c = 0;
-      console.log("###########################################################");
-      console.log("###########################################################");
-      console.log(objects.length);
-      console.log("###########################################################");
-      console.log(objects);
       Array.from(objects).map((item) => {
         // Start loading image
         const img = new Image();
@@ -577,10 +571,9 @@ footer : contact, notifications, rights
         // Once image is loaded replace the src of the HTML element
         img.onload = () => {
           item.classList.remove('asyncImage');
-          console.log(c + "img  LOADED " + item.nodeName); c++;
           return item.nodeName === 'IMG' ?
             item.src = item.dataset.src :
-            item.style.backgroundImage = `url(${item.dataset.src})`;
+            item.style.backgroundImage = `url("${item.dataset.src}")`;
         };
       });
     })();
