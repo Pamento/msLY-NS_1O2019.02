@@ -1,19 +1,40 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./style/style.css">
   <title>Massage sur Lyon</title>
+  <script>
+    (() => {
+      'use strict';
+      // Page is loaded
+      const objects = document.getElementsByClassName('asyncImage');
+      Array.from(objects).map((item) => {
+        // Start loading image
+        const img = new Image();
+        img.src = item.dataset.src;
+        // Once image is loaded replace the src of the HTML element
+        img.onload = () => {
+          item.classList.remove('asyncImage');
+          return item.nodeName === 'IMG' ?
+            item.src = item.dataset.src :
+            item.style.backgroundImage = `url(${item.dataset.src})`;
+        };
+      });
+    })();
+  </script>
 </head>
+
 <body id="body">
   <header id="headerTop">
     <a class="contactLink" href="#contact">
       <div class="header">
-        <img class="logo" src="./images/o_logo.jpg" alt="Oneida logo">
+        <img class="logo" src="./images/o_logo.jpg" alt="Oneida logo" data-lieu="Lyon">
         <h1>Massages <wbr>bien-être à Lyon</h1>
-        <img class="oneidaName" src="./images/site_name.jpg" alt="Oneida name">
+          <img class="oneidaName" src="./images/site_name.jpg" alt="Oneida name" data-lieu="Lyon">
       </div>
     </a>
   </header>
@@ -34,12 +55,19 @@
     <section class="galery">
       <div class="card">
         <a class="contactLink" href="#contact">
-          <div class="cardLink" id="m0" >
+          <div class="cardLink" id="m0">
             <div class="contentCard">
               <div class="mDescript">
                 <p><span class="oneidaFont">Oneida, </span></p>
-                <p>Aide-soignante depuis plusieurs années, j'ai pu expérimenter l'impact positif du toucher sur le corps et l'esprit auprès de nombreux patients. Parce qu 'avec les gestes , nous nous exprimons et  pouvons communiquer avec l'autre , je demeure convaincue que le toucher est une langue à part entière . Ainsi, naturellement j'ai entrepris de m'orienter vers le massage bien-être afin d'apporter une autre dimension à mon métier, et plus encore, partager mon savoir-faire avec un public plus élargi, plus diversifié.</p>
-                <p>Le respect de l'autre , la bienveillance , la patience , la discrétion et le professionnalisme continuant de représenter pour moi plus que jamais, les piliers essentiels à toute relation humaine de qualité.</p>
+                <p>Aide-soignante depuis plusieurs années, j'ai pu expérimenter l'impact positif du toucher sur le corps
+                  et l'esprit auprès de nombreux patients. Parce qu 'avec les gestes , nous nous exprimons et pouvons
+                  communiquer avec l'autre , je demeure convaincue que le toucher est une langue à part entière . Ainsi,
+                  naturellement j'ai entrepris de m'orienter vers le massage bien-être afin d'apporter une autre
+                  dimension à mon métier, et plus encore, partager mon savoir-faire avec un public plus élargi, plus
+                  diversifié.</p>
+                <p>Le respect de l'autre , la bienveillance , la patience , la discrétion et le professionnalisme
+                  continuant de représenter pour moi plus que jamais, les piliers essentiels à toute relation humaine de
+                  qualité.</p>
               </div>
             </div>
           </div>
@@ -48,14 +76,16 @@
 
       <div class="card">
         <a class="contactLink" href="#contact">
-          <div class="cardLink" id="m1" >
+          <div class="cardLink" id="m1">
             <h2>LE RENAISSANCE </h2>
             <div class="contentCard">
               <div class="smallImage">
-                <img src="./images/s-californien.jpg" alt="massage californien" title="massage californien">
+                <img class="asyncImage" src="./images/s-californien.jpg" alt="massage californien"
+                  title="massage californien" data-lieu="Lyon">
               </div>
               <div class="mDescript">
-                <p>Permet de dénouer les tensions du corps et de l'esprit. Vous vous retrouvez détendu, apaisé et regénéré.</p>
+                <p>Permet de dénouer les tensions du corps et de l'esprit. Vous vous retrouvez détendu, apaisé et
+                  regénéré.</p>
                 <hr>
                 <span>Prix : 65€ pour 60 min.</span>
               </div>
@@ -70,10 +100,14 @@
             <h2>LE SERENITE</h2>
             <div class="contentCard">
               <div class="smallImage">
-                <img src="./images/s-pierres-chaudes.jpg" alt="Massage Aux pierres chaudes" title="massage aux pierres chaudes">
+                <img class="asyncImage" src="./images/s-pierres-chaudes.jpg" alt="Massage Aux pierres chaudes"
+                  title="massage aux pierres chaudes" data-lieu="Lyon">
               </div>
               <div class="mDescript">
-                <p>Ce massage qui utilise les pierres chaudes volcaniques est idéal en hiver et en période de grand froid. Il est apprécié des personnes ayant des  extrémités froides( mains, pieds). On peut également se tourner vers ce type de soin pour ses vertus amincissantes alliées aux huiles essentielles utilisées à cet effet.
+                <p>Ce massage qui utilise les pierres chaudes volcaniques est idéal en hiver et en période de grand
+                  froid. Il est apprécié des personnes ayant des extrémités froides( mains, pieds). On peut également se
+                  tourner vers ce type de soin pour ses vertus amincissantes alliées aux huiles essentielles utilisées à
+                  cet effet.
                 </p>
                 <hr>
                 <span>Prix : 65€ pour 60 min.</span>
@@ -89,10 +123,13 @@
             <h2>L'EQUILIBRE</h2>
             <div class="contentCard">
               <div class="smallImage">
-                <img src="./images/s-abhyanga.jpg" alt="Massage ayurvédique abhyanga" title="massage ayurvédique abhyanga">
+                <img class="asyncImage" src="./images/s-abhyanga.jpg" alt="Massage ayurvédique abhyanga"
+                  title="massage ayurvédique abhyanga" data-lieu="Lyon">
               </div>
               <div class="mDescript">
-                <p>Offre un véritable bien-être aux sujets les plus stressés. Favorise la concentration et d'un point de vue concret, le recours régulier à cette technique de relaxation permet de réduire toutes les manifestations d'un état nerveux ( insomnie, maux de tête..).
+                <p>Offre un véritable bien-être aux sujets les plus stressés. Favorise la concentration et d'un point de
+                  vue concret, le recours régulier à cette technique de relaxation permet de réduire toutes les
+                  manifestations d'un état nerveux ( insomnie, maux de tête..).
                 </p>
                 <hr>
                 <span>Prix : 65€ pour 60 min.</span>
@@ -107,12 +144,13 @@
           <div class="cardLink" id="m5">
             <h2>L'APAISANT</h2>
             <div class="contentCard">
-              <div class="smallImage">           
-                <img src="./images/s-shirotchampi.jpg" alt="massage ayurvédique shirotchampi" title="massage ayurvédique shirotchampi">         
+              <div class="smallImage">
+                <img class="asyncImage" src="./images/s-shirotchampi.jpg" alt="massage ayurvédique shirotchampi"
+                  title="massage ayurvédique shirotchampi" data-lieu="Lyon">
               </div>
               <div class="mDescript">
                 <p>Technique de détente crânienne inspirée de la médecine ayurvédique.
-                    Elle procure calme et apaisement ou vigueur et énergie.
+                  Elle procure calme et apaisement ou vigueur et énergie.
                 </p>
                 <hr>
                 <span>Prix : 65€ pour 60 min.</span>
@@ -128,10 +166,13 @@
             <h2>LE DYNAMISANT</h2>
             <div class="contentCard">
               <div class="smallImage">
-                <img src="./images/s-balinais.jpg" alt="massage balinais" title="massage balinais">         
+                <img class="asyncImage" src="./images/s-balinais.jpg" alt="massage balinais" title="massage balinais"
+                  data-lieu="Lyon">
               </div>
               <div class="mDescript">
-                <p>Originaire de Bali, ce massage est issue des techniques traditionnelles originaires de Chine, Thaïlande et Inde. Il dénoue les tensions, apaise l'esprit et draine les toxines. Un moment unique de relaxation profonde !
+                <p>Originaire de Bali, ce massage est issue des techniques traditionnelles originaires de Chine,
+                  Thaïlande et Inde. Il dénoue les tensions, apaise l'esprit et draine les toxines. Un moment unique de
+                  relaxation profonde !
                 </p>
                 <hr>
                 <span>Prix : 65€ pour 60 min.</span>
@@ -146,11 +187,14 @@
           <div class="cardLink" id="m7">
             <h2>LE REPOSE-PIEDS</h2>
             <div class="contentCard">
-              <div class="smallImage">           
-                <img src="./images/s-foot-thai.png" alt="massage Foot thai" title="massage foot thai">         
+              <div class="smallImage">
+                <img class="asyncImage" src="./images/s-foot-thai.png" alt="massage Foot thai" title="massage foot thai"
+                  data-lieu="Lyon">
               </div>
               <div class="mDescript">
-                <p>Composé de massages avec les mains et de pressions sur des points spécifiques à l'aide d'un stylet en bois. C'est un massage relaxant des pieds, des jambes jusqu'aux genoux. Il favorise la circulation sanguine et lymphatique, redonne la vitalité au corps et favorise l'élimination des toxines.
+                <p>Composé de massages avec les mains et de pressions sur des points spécifiques à l'aide d'un stylet en
+                  bois. C'est un massage relaxant des pieds, des jambes jusqu'aux genoux. Il favorise la circulation
+                  sanguine et lymphatique, redonne la vitalité au corps et favorise l'élimination des toxines.
                 </p>
                 <hr>
                 <span>Prix : 65€ pour 60 min.</span>
@@ -165,11 +209,14 @@
           <div class="cardLink" id="m8">
             <h2>L'HARMONIE</h2>
             <div class="contentCard">
-              <div class="smallImage">           
-                <img src="./images/s-shiatsu.jpg" alt="massage Shiatsu" title="massage shiatsu">         
+              <div class="smallImage">
+                <img class="asyncImage" src="./images/s-shiatsu.jpg" alt="massage Shiatsu" title="massage shiatsu"
+                  data-lieu="Lyon">
               </div>
               <div class="mDescript">
-                <p>Pratiquée depuis des millénaires en Extrême-Orient, il allie pressions et étirement de l'ensemble du corps, le plus souvent avec les mains , particulièrement les pouces et les paumes.Se pratique régulièrement pour un bénéfice durable.
+                <p>Pratiquée depuis des millénaires en Extrême-Orient, il allie pressions et étirement de l'ensemble du
+                  corps, le plus souvent avec les mains , particulièrement les pouces et les paumes.Se pratique
+                  régulièrement pour un bénéfice durable.
                 </p>
                 <hr>
                 <span>Prix : 65€ pour 60 min.</span>
@@ -184,11 +231,13 @@
           <div class="cardLink" id="m11">
             <h2>LE STIMULANT</h2>
             <div class="contentCard">
-              <div class="smallImage">           
-                <img src="./images/s-thai-l-huile.jpg" alt="massage Thai à l’huile" title="massage thai à l’huile">         
+              <div class="smallImage">
+                <img class="asyncImage" src="./images/s-thai-l-huile.jpg" alt="massage Thai à l’huile"
+                  title="massage thai à l’huile" data-lieu="Lyon">
               </div>
               <div class="mDescript">
-                <p>Technique de relaxation qui allie digit pression, lissage profond et étirement. Le corps est libéré des tensions nerveuses et musculaires.
+                <p>Technique de relaxation qui allie digit pression, lissage profond et étirement. Le corps est libéré
+                  des tensions nerveuses et musculaires.
                 </p>
                 <hr>
                 <span>Prix : 65€ pour 60 min.</span>
@@ -212,6 +261,11 @@
       </div>
     </div>
   </footer>
-  <span class="developerLink">&copy; <a href="https://www.linkedin.com/in/pawel-grzesik">Pamento</a> | 2019</span>
+  <span class="developerLink">&copy; <a href="https://www.linkedin.com/in/pawel-grzesik">Pamento</a> | <span
+      id="yearInUp">2019</span></span>
+  <script>
+    document.getElementById('yearInUp').innerHTML = new Date().getFullYear();
+  </script>
 </body>
+
 </html>
